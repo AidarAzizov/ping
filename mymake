@@ -1,0 +1,3 @@
+#!/bin/bash -x
+
+g++ -std=c++11 srcs/main.cpp srcs/socket.cpp srcs/packet.cpp srcs/print.cpp -o ft_ping
