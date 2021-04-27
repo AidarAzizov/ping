@@ -65,21 +65,16 @@ BOOL	ping(t_IcmpTargetType *targets)
 		return (FALSE);
 	while (run(targets))
 	{
-		write(1, "f", 1);
 		if (!makeDelay(targets->currFl.dt, &firstIter))
 			continue ;
-		write(1, "e", 1);
 		recyclePacket(targets);
-		write(1, "d", 1);
 		if (!sender(targets))
 			continue ;
-		write(1, "c", 1);
 		if (!initTime(&targets->timebef))
 			return (FALSE);
 		alarm(targets->currFl.w);
 		if (!receiver(targets))
 			continue ;
-		write(1, "b", 1);
 		if (!initTime(&targets->timeaft))
 			return (FALSE);
 		printBody(targets);

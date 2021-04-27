@@ -14,7 +14,7 @@ BOOL	sender(t_IcmpTargetType *targets)
 		= ((struct sockaddr_in *)&targets->_addrinfo->ai_addr)->sin_addr.s_addr;
 	len = targets->packlen;
 	howSended = sendto(targets->_socket, targets->packToSend, len, 0,
-			(struct sockaddr *)&connection, sizeof(struct sockaddr));
+			(struct sockaddr *)&connection, sizeof(struct sockaddr *));
 	if (howSended == len)
 		return (TRUE);
 	if (howSended == -1)
