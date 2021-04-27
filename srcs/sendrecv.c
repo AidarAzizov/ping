@@ -11,7 +11,7 @@ BOOL	sender(t_IcmpTargetType *targets)
 	connection.sin_port = targets->_addrinfo->ai_protocol;
 	connection.sin_family = targets->_addrinfo->ai_family;
 	connection.sin_addr.s_addr
-		= ((sockaddr_in *)&targets->_addrinfo->ai_addr)->sin_addr.s_addr;
+		= ((struct sockaddr_in *)&targets->_addrinfo->ai_addr)->sin_addr.s_addr;
 	len = targets->packlen;
 	howSended = sendto(targets->_socket, targets->packToSend, len, 0,
 			(struct sockaddr *)&connection, sizeof(struct sockaddr));
