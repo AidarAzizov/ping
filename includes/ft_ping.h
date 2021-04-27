@@ -114,14 +114,14 @@ double		firstTernare(double tone, double ttwo);
 int			printExitWStr(const char *message, const char *body);
 BOOL		printExitWInt(const char *message, int num);
 
-void		printHead(IcmpTargetType *targets);
-void		printBody(IcmpTargetType *target);
-void		printTail(IcmpTargetType *target);
+void		printHead(t_IcmpTargetType *targets);
+void		printBody(t_IcmpTargetType *target);
+void		printTail(t_IcmpTargetType *target);
 
-BOOL		createSocket(IcmpTargetType *target);
+BOOL		createSocket(t_IcmpTargetType *target);
 
-BOOL		init_addr(IcmpTargetType *targets, const char *arg);
-void		parseArgs(IcmpTargetType *targets,
+BOOL		init_addr(t_IcmpTargetType *targets, const char *arg);
+void		parseArgs(t_IcmpTargetType *targets,
 				int argc, char *argv[], BOOL *result);
 
 int			count_not_of(const char *str, char symb);
@@ -129,17 +129,17 @@ BOOL		initTime(struct timeval *timeout);
 int			printAndExit(const char *message, int code);
 uint16_t	GetCSum(const uint8_t *Buf, uint32_t Len, uint16_t StartVal = 0);
 
-BOOL		prepareTargets(IcmpTargetType *target);
-void		nullifyTargets(IcmpTargetType *target);
+BOOL		prepareTargets(t_IcmpTargetType *target);
+void		nullifyTargets(t_IcmpTargetType *target);
 
 int			printInfo(void);
-void		recyclePacket(IcmpTargetType *target);
-void		clearPacket(IcmpTargetType *target);
-BOOL		bindingPacket(IcmpTargetType *targets);
+void		recyclePacket(t_IcmpTargetType *target);
+void		clearPacket(t_IcmpTargetType *target);
+BOOL		bindingPacket(t_IcmpTargetType *targets);
 
-BOOL		sender(IcmpTargetType *targets);
-BOOL		receiver(IcmpTargetType *target);
+BOOL		sender(t_IcmpTargetType *targets);
+BOOL		receiver(t_IcmpTargetType *target);
 
-BOOL		ping(IcmpTargetType *targets);
+BOOL		ping(t_IcmpTargetType *targets);
 
 #endif
