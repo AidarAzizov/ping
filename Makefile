@@ -6,7 +6,6 @@ PATH_INC = ./includes/
 
 INCLUDES = -I $(PATH_INC)
 
-CC = cc
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -g
 LIBS = -lm
 
@@ -29,7 +28,10 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(LIBS)
+	@gcc -c $(CFLAGS) $(SRC) $(INCLUDE)
+	@ar rc $(NAME) $(OBJ)
+	@echo "(•̀ᴗ•́)و filler generated!".
+
 
 clean:
 	rm -f $(OBJ)
