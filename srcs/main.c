@@ -18,7 +18,7 @@ void	setBaseFlags(t_flags *fl)
 	fl->t = 64;
 	fl->inf_w = TRUE;
 	fl->inf_c = TRUE;
-	fl->dt = 1.0;
+	fl->i = 1.0;
 	fl->more_info = FALSE;
 	fl->info = FALSE;
 }
@@ -38,7 +38,7 @@ BOOL	checkArgs(t_flags *fl)
 	if (fl->t < 0 || fl->t > 255)
 		return (printAndExit(" invalid argument for -t flag:"
 				" out of range: 0 <= value <= 255", FALSE));
-	if (fl->dt < 0.001 || fl->dt > 600.)
+	if (fl->i < 0.001 || fl->i > 600.)
 		return (printAndExit(" invalid argument for -dt flag:"
 				" out of range: 0.001 <= value <= 600.000", FALSE));
 	return (TRUE);

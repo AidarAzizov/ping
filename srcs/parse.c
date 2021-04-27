@@ -111,13 +111,13 @@ void	parseArgs(t_IcmpTargetType *targets,
 					= init_count(&targets->currFl.w, &i, argc, argv));
 		else if (strncmp(argv[i], "-s", 2) == 0)
 			*result = init_count(&targets->currFl.s, &i, argc, argv);
-		else if (strncmp(argv[i], "-t", 2) == 0)
+		else if (strncmp(argv[i], "-T", 2) == 0)
 			*result = init_count(&targets->currFl.t, &i, argc, argv);
 		else if (strncmp(argv[i], "-c", 2) == 0)
 			targets->currFl.inf_c = !(*result
 					= init_count(&targets->currFl.c, &i, argc, argv));
-		else if (strncmp(argv[i], "-dt", 3) == 0)
-			*result = init_delaytime(&targets->currFl.dt, &i, argc, argv);
+		else if (strncmp(argv[i], "-i", 3) == 0)
+			*result = init_delaytime(&targets->currFl.i, &i, argc, argv);
 		else
 			*result = printExitWStr(("invalid argument: ", argv[i]), 0);
 	}

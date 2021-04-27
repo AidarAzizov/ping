@@ -57,7 +57,7 @@ typedef struct s_flags
 	uint64_t	t;
 	uint64_t	c;
 	uint64_t	w;
-	double		dt;
+	double		i;
 	BOOL		inf_c;
 	BOOL		inf_w;
 	BOOL		info;

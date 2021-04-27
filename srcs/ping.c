@@ -64,7 +64,7 @@ BOOL	ping(t_IcmpTargetType *targets)
 		return (FALSE);
 	while (run(targets))
 	{
-		if (!makeDelay(targets->currFl.dt, &firstIter))
+		if (!makeDelay(targets->currFl.i, &firstIter))
 			continue ;
 		recyclePacket(targets);
 		if (!sender(targets))
