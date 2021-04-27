@@ -5,7 +5,7 @@ BOOL	checkHeader(const t_IcmpTargetType *target)
 	struct iphdr	*ip_h;
 	struct icmphdr	*icmp_h;
 
-	icmp_h = (struct icmphdr *)(target->packToRecv + sizeof(struct iphdr *));
+	icmp_h = (struct icmphdr *)(target->packToRecv + sizeof(struct iphdr));
 	ip_h = (struct iphdr *)target->packToRecv;
 	if (ip_h->saddr != target->_ip->daddr
 		|| ip_h->protocol != target->_ip->protocol
@@ -46,7 +46,7 @@ void	printHead(t_IcmpTargetType *targets)
 	int	len;
 
 	len = targets->currFl.s
-		+ sizeof(struct iphdr *) + sizeof(struct icmphdr *);
+		+ sizeof(struct iphdr) + sizeof(struct icmphdr);
 	printf("PING %s (%s) %lld(%d) bytes of data.\n",
 		targets->addr_from_arg, targets->dst_addr,
 		targets->currFl.s, len);
@@ -63,7 +63,7 @@ void	printBody(t_IcmpTargetType *target)
 		return ;
 	time = (double)(target->timeaft.tv_sec - target->timebef.tv_sec) *1000.
 		+ (double)(target->timeaft.tv_usec - target->timebef.tv_usec) / 1000.;
-	packlen = target->packlen - sizeof(struct iphdr *);
+	packlen = target->packlen - sizeof(struct iphdr);
 	if (strcmp(target->addr_from_arg, target->dst_addr) == 0)
 		printf("%d bytes from %s: icmp_seq=%d ttl=%d time=%.1f ms\n",
 			packlen, target->dst_addr, target->_icmp->un.echo.sequence,

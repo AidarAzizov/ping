@@ -4,8 +4,8 @@ extern t_mypair	g_work;
 
 BOOL	ip_prepare(t_IcmpTargetType *target)
 {
-	target->_ip->tot_len = htons(sizeof(struct iphdr *)
-			+ sizeof(struct icmphdr *)
+	target->_ip->tot_len = htons(sizeof(struct iphdr)
+			+ sizeof(struct icmphdr)
 			+ target->currFl.s);
 	target->_ip->protocol = target->_addrinfo->ai_protocol;
 	target->_ip->ttl = target->currFl.t;
@@ -58,7 +58,7 @@ BOOL	prepareTargets(t_IcmpTargetType *target)
 	if (gettimeofday(&target->pinfo.times, NULL) != SUCCESS_CODE)
 		return (FALSE);
 	payloadLength = target->currFl.s;
-	offset = sizeof(struct iphdr *) + sizeof(struct icmphdr *);
+	offset = sizeof(struct iphdr) + sizeof(struct icmphdr);
 	i = 0;
 	while (i++ < payloadLength)
 		target->packToSend[offset + i] = (char)i;

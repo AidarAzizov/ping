@@ -22,7 +22,7 @@ void	recyclePacket(t_IcmpTargetType *target)
 	target->_icmp->un.echo.sequence++;
 	target->_icmp->checksum = 0;
 	target->_icmp->checksum = ~GetCSum((uint8_t *)target->_icmp,
-			sizeof(struct icmphdr *) + target->currFl.s, 0);
+			sizeof(struct icmphdr) + target->currFl.s, 0);
 	memset(target->packToRecv, 0, target->packlen);
 	target->iov.iov_base = target->packToRecv;
 	target->iov.iov_len = target->packlen;
@@ -44,7 +44,7 @@ void	clearPacket(t_IcmpTargetType *target)
 
 BOOL	bindingPacket(t_IcmpTargetType *targets)
 {
-	targets->packlen = sizeof(struct iphdr *) + sizeof(struct icmphdr *)
+	targets->packlen = sizeof(struct iphdr) + sizeof(struct icmphdr)
 		+ targets->currFl.s;
 	targets->packToSend = (char *)malloc(sizeof(char) * targets->packlen);
 	if (!targets->packToSend)
@@ -53,7 +53,7 @@ BOOL	bindingPacket(t_IcmpTargetType *targets)
 	if (!targets->packToRecv)
 		return (printAndExit("System error. Bad allocate memory", FALSE));
 	targets->_ip = (struct iphdr *)targets->packToSend;
-	targets->_icmp = (struct icmphdr *)(targets->packToSend
-			+ sizeof(struct iphdr*));
+	targets->_icmp = (struct icmphdr)(targets->packToSend
+			+ sizeof(struct iphdr));
 	return (TRUE);
 }
