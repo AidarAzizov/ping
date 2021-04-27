@@ -25,8 +25,8 @@ BOOL	isValidPacket(t_IcmpTargetType *target)
 
 	if (!checkHeader(target))
 		return (FALSE);
-	icmp_h = (struct icmphdr *)(target->packToRecv + sizeof(struct iphdr *));
-	offset = sizeof(struct iphdr *) + sizeof(struct icmphdr *);
+	icmp_h = (struct icmphdr *)(target->packToRecv + sizeof(struct iphdr));
+	offset = sizeof(struct iphdr) + sizeof(struct icmphdr);
 	temp = icmp_h->checksum;
 	icmp_h->checksum = 0;
 	res = ~GetCSum((uint8_t *)icmp_h,
