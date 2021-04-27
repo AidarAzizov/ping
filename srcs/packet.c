@@ -22,7 +22,7 @@ void	recyclePacket(t_IcmpTargetType *target)
 	target->_icmp->un.echo.sequence++;
 	target->_icmp->checksum = 0;
 	target->_icmp->checksum = ~GetCSum((uint8_t *)target->_icmp,
-			sizeof(struct icmphdr *) + target->currFl.s);
+			sizeof(struct icmphdr *) + target->currFl.s, 0);
 	memset(target->packToRecv, 0, target->packlen);
 	target->iov.iov_base = target->packToRecv;
 	target->iov.iov_len = target->packlen;

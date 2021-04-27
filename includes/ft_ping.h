@@ -127,7 +127,7 @@ void		parseArgs(t_IcmpTargetType *targets,
 int			count_not_of(const char *str, char symb);
 BOOL		initTime(struct timeval *timeout);
 int			printAndExit(const char *message, int code);
-uint16_t	GetCSum(const uint8_t *Buf, uint32_t Len, uint16_t StartVal = 0);
+uint16_t	GetCSum(const uint8_t *Buf, uint32_t Len, uint16_t StartVal);
 
 BOOL		prepareTargets(t_IcmpTargetType *target);
 void		nullifyTargets(t_IcmpTargetType *target);
