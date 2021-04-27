@@ -29,7 +29,7 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft/
+	make -C
 	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
 clean:
