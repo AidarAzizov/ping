@@ -29,13 +29,13 @@ BOOL	checkArgs(t_flags *fl)
 			|| fl->c > 9223372036854775807))
 		return (printAndExit(" invalid argument for -dt flag:"
 				" out of range: 0 <= value <= 9223372036854775807", FALSE));
-	if (!fl->inf_w && (fl->w < 0 || fl->w > 2147483647))
+	if (!fl->inf_w && fl->w > 2147483647)
 		return (printAndExit(" invalid argument for -w flag:"
 				" out of range: 0 <= value <= 2147483647", FALSE));
-	if (fl->s < 0 || fl->s > 127992)
+	if (fl->s > 127992)
 		return (printAndExit(" invalid argument for -s flag:"
 				" out of range: 0 <= value <= 127992", FALSE));
-	if (fl->t < 0 || fl->t > 255)
+	if (fl->t > 255)
 		return (printAndExit(" invalid argument for -T flag:"
 				" out of range: 0 <= value <= 255", FALSE));
 	if (fl->i < 0.001 || fl->i > 600.)
