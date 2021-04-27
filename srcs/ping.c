@@ -14,7 +14,7 @@ BOOL	makeDelay(double delay_sec, BOOL *is_firstIter)
 		return (TRUE);
 	}
 	initTime(&beg);
-	while (1488 && !g_work.alreadyend)
+	while (!g_work.alreadyend)
 	{
 		initTime(&curr);
 		deltatime = (double)(curr.tv_sec - beg.tv_sec)

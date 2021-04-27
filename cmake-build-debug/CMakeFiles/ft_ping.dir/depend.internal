@@ -4,12 +4,18 @@
 CMakeFiles/ft_ping.dir/srcs/helpers.c.o
  /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
  /Users/asusan/Desktop/gits/ft_ping/srcs/helpers.c
+CMakeFiles/ft_ping.dir/srcs/helpers_other.c.o
+ /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
+ /Users/asusan/Desktop/gits/ft_ping/srcs/helpers_other.c
 CMakeFiles/ft_ping.dir/srcs/main.c.o
  /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
  /Users/asusan/Desktop/gits/ft_ping/srcs/main.c
 CMakeFiles/ft_ping.dir/srcs/packet.c.o
  /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
  /Users/asusan/Desktop/gits/ft_ping/srcs/packet.c
+CMakeFiles/ft_ping.dir/srcs/parse.c.o
+ /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
+ /Users/asusan/Desktop/gits/ft_ping/srcs/parse.c
 CMakeFiles/ft_ping.dir/srcs/ping.c.o
  /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
  /Users/asusan/Desktop/gits/ft_ping/srcs/ping.c
@@ -25,6 +31,3 @@ CMakeFiles/ft_ping.dir/srcs/sendrecv.c.o
 CMakeFiles/ft_ping.dir/srcs/socket.c.o
  /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
  /Users/asusan/Desktop/gits/ft_ping/srcs/socket.c
-CMakeFiles/ft_ping.dir/srcs/parse.cpp.o
- /Users/asusan/Desktop/gits/ft_ping/includes/ft_ping.h
- /Users/asusan/Desktop/gits/ft_ping/srcs/parse.cpp
