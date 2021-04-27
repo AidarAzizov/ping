@@ -12,7 +12,7 @@ void	setSignal(int sig)
 
 void	setBaseFlags(t_flags *fl)
 {
-	fl->w = 0;
+	fl->w = 2;
 	fl->s = 56;
 	fl->c = 0;
 	fl->t = 64;

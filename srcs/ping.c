@@ -32,6 +32,7 @@ BOOL	run(t_IcmpTargetType *targets)
 	int	delta;
 
 	delta = targets->timeaft.tv_sec - targets->timebegin.tv_sec;
+	printf("%d\n", delta);
 	if (g_work.alreadyend)
 		return (FALSE);
 	if ((targets->currFl.inf_c || targets->currFl.c-- > 0)
