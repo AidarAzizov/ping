@@ -44,7 +44,10 @@ void	clearPacket(t_IcmpTargetType *target)
 
 BOOL	bindingPacket(t_IcmpTargetType *targets)
 {
-	targets->packlen = sizeof(struct iphdr) + sizeof(struct icmphdr)
+	size_t temp_len;
+
+	temp_len = sizeof(struct iphdr);
+	targets->packlen = temp_len + sizeof(struct icmphdr)
 		+ targets->currFl.s;
 	targets->packToSend = (char *)malloc(sizeof(char) * targets->packlen);
 	if (!targets->packToSend)
@@ -53,6 +56,7 @@ BOOL	bindingPacket(t_IcmpTargetType *targets)
 	if (!targets->packToRecv)
 		return (printAndExit("System error. Bad allocate memory", FALSE));
 	targets->_ip = (struct iphdr *)targets->packToSend;
-	targets->_icmp = (struct icmphdr)(&targets->packToSend[sizeof(struct iphdr)]);
+	targets->_icmp = (struct icmphdr)(targets->packToSend
+			+ temp_len);
 	return (TRUE);
 }
