@@ -64,6 +64,8 @@ int	main(int argc, char *argv[])
 	t_IcmpTargetType	targets;
 	BOOL				res;
 
+	printf("%d\t%d", sizeof(struct icmphdr), sizeof(struct icmphdr *));
+
 	res = TRUE;
 	signal(SIGALRM, setSignal);
 	signal(SIGINT, setSignal);

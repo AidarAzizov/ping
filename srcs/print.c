@@ -30,7 +30,7 @@ BOOL	isValidPacket(t_IcmpTargetType *target)
 	temp = icmp_h->checksum;
 	icmp_h->checksum = 0;
 	res = ~GetCSum((uint8_t *)icmp_h,
-			sizeof(struct icmphdr *) + target->currFl.s, 0);
+			sizeof(struct icmphdr) + target->currFl.s, 0);
 	if (icmp_h->code != 0 || icmp_h->type != ICMP_ECHOREPLY)
 		return (printAndExit("Appeared network error with try to ping", FALSE));
 	if (res != temp)
