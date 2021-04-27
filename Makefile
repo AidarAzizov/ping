@@ -28,9 +28,7 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc -c $(CFLAGS) $(SRC) $(INCLUDE)
-	@ar rc $(NAME) $(OBJ)
-	@echo "(•̀ᴗ•́)و filler generated!".
+	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
 
 clean:
