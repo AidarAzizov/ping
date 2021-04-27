@@ -1,12 +1,12 @@
 #include "../includes/ft_ping.h"
 
-extern mypair	g_work;
+extern t_mypair	g_work;
 
 BOOL	sender(t_IcmpTargetType *targets)
 {
-	sockaddr_in	connection;
-	int			howSended;
-	int			len;
+	struct sockaddr_in	connection;
+	int					howSended;
+	int					len;
 
 	connection.sin_port = targets->_addrinfo->ai_protocol;
 	connection.sin_family = targets->_addrinfo->ai_family;
@@ -18,7 +18,7 @@ BOOL	sender(t_IcmpTargetType *targets)
 	if (howSended == len)
 		return (TRUE);
 	if (howSended == -1)
-		return (printAndExit(strerror(errno)));
+		return (printAndExit(strerror(errno), FALSE));
 	return (printAndExit("Bad try to send packet", FALSE));
 }
 
