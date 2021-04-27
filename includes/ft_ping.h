@@ -1,143 +1,145 @@
-#pragma once
-
 #ifndef FT_PING_H
 # define FT_PING_H
 
-#include <iostream>
-#include <string.h>
-#include <stdio.h>
-#include <iomanip>
-#include <stdint.h>
-#include <time.h>
-#include <ctime>
+# include <string.h>
+# include <stdio.h>
+# include <stdint.h>
+# include <time.h>
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/time.h>
-#include <netinet/ip_icmp.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sys/select.h>
-#include <netdb.h>
-#include <signal.h>
-#include <math.h>
-#include <ifaddrs.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/socket.h>
+# include <sys/time.h>
+# include <netinet/ip_icmp.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <sys/select.h>
+# include <netdb.h>
+# include <signal.h>
+# include <math.h>
+# include <ifaddrs.h>
 
-#define SUCCESS_CODE 0
-#define ERROR_CODE 1
+# define SUCCESS_CODE 0
+# define ERROR_CODE 1
 
-#define BYTE uint8_t
-#define LOCALHOST "0.0.0.0"
+# define BOOL int
+# define TRUE 1
+# define FALSE 0
 
-#ifndef DBL_MAX
-#define DBL_MAX 1.79769e+308
-#endif
+# define LOCALHOST "0.0.0.0"
 
-#ifndef DBL_MIN
-#define DBL_MIN 2.22507e-308
-#endif
+# ifndef DBL_MAX
+#  define DBL_MAX 1.79769e+308
+# endif
 
-#define ROOT_UID 0
-#define SOCKET int
-#define INITED(x) (x != -1)
+# ifndef DBL_MIN
+#  define DBL_MIN 2.22507e-308
+# endif
 
-typedef struct
+# define ROOT_UID 0
+# define SOCKET int
+
+typedef struct s_ip_addr
 {
-    uint8_t i1;
-    uint8_t i2;
-    uint8_t i3;
-    uint8_t i4;
-} ip_addr;
+	uint8_t	i1;
+	uint8_t	i2;
+	uint8_t	i3;
+	uint8_t	i4;
+}	t_ip_addr;
 
-typedef struct
+typedef struct s_flags
 {
-    uint64_t    count_s;
-    uint64_t    count_t;
-    uint64_t    count_c;
-    uint64_t    count_w;
-    double      delay_time;
-    bool        infinity_c;
-    bool        infinity_w;
-    bool        print_info;
-    bool        more_info;
-} flags;
+	uint64_t	s;
+	uint64_t	t;
+	uint64_t	c;
+	uint64_t	w;
+	double		dt;
+	BOOL		inf_c;
+	BOOL		inf_w;
+	BOOL		info;
+	BOOL		more_info;
+}	t_flags;
 
-typedef struct
+typedef struct s_mdev
 {
-    double sum;
-    double sum2;
-} t_mdev;
+	double	sum;
+	double	sum2;
+}	t_mdev;
 
-typedef struct
+typedef struct s_pingstat
 {
-    double min;
-    double avg;
-    double max;
-    t_mdev mdev;
+	double			min;
+	double			avg;
+	double			max;
+	t_mdev			mdev;
+	uint32_t		received;
+	struct timeval	times;
+}	t_pingstat;
 
-    uint32_t received;
-    struct timeval times;
-} pingstat;
-
-typedef struct
+typedef struct s_mypair
 {
-    bool stillwait;
-    bool alreadyend;
-} mypair;
+	BOOL	stillwait;
+	BOOL	alreadyend;
+}	t_mypair;
 
-typedef struct
+typedef struct s_IcmpTargetType
 {
-    pingstat        pinginfo;
-    flags           currentFlags;
-    struct iphdr    *_ip;
-    struct icmphdr  *_icmp;
-    struct addrinfo *_addrinfo;
-    struct addrinfo hints;
-    struct iovec    iov;
-    struct msghdr   msg;
-    struct timeval  timebefore;
-    struct timeval  timeafter;
-    SOCKET          _socket = 0;
-    struct timeval  timebegin;
-    struct timeval  timeend;
-    __uid_t         uid;
+	t_pingstat		pinfo;
+	t_flags			currFl;
+	struct iphdr	*_ip;
+	struct icmphdr	*_icmp;
+	struct addrinfo	*_addrinfo;
+	struct addrinfo	hints;
+	struct iovec	iov;
+	struct msghdr	msg;
+	struct timeval	timebef;
+	struct timeval	timeaft;
+	SOCKET			_socket;
+	struct timeval	timebegin;
+	struct timeval	timeend;
+	uint16_t		uid;
+	BOOL			addr_from_arg_host;
+	char			*addr_from_arg;
+	char			dst_addr[INET_ADDRSTRLEN];
+	char			src_addr[INET_ADDRSTRLEN];
+	char			*packToRecv;
+	char			*packToSend;
+	uint16_t		packlen;
+}	t_IcmpTargetType;
 
-    bool            addr_from_arg_host;
-    char            *addr_from_arg;
-    char            dst_addr[INET_ADDRSTRLEN];
-    char            src_addr[INET_ADDRSTRLEN];
-    char            *packToRecv;
-    char            *packToSend;
-    uint16_t        packlen;
-} IcmpTargetType;
+BOOL		INITED(int x);
+double		secondTernare(double tone, double ttwo);
+double		firstTernare(double tone, double ttwo);
 
+int			printExitWStr(const char *message, const char *body);
+BOOL		printExitWInt(const char *message, int num);
 
-void        printHead(IcmpTargetType *targets);
-void        printBody(IcmpTargetType *target);
-void        printTail(IcmpTargetType *target);
+void		printHead(IcmpTargetType *targets);
+void		printBody(IcmpTargetType *target);
+void		printTail(IcmpTargetType *target);
 
-bool        createSocket(IcmpTargetType *target);
+BOOL		createSocket(IcmpTargetType *target);
 
-bool        init_addr(IcmpTargetType *targets, const char* arg);
-void        parseArgs(IcmpTargetType *targets, int argc, char *argv[], bool *result);
+BOOL		init_addr(IcmpTargetType *targets, const char *arg);
+void		parseArgs(IcmpTargetType *targets,
+				int argc, char *argv[], BOOL *result);
 
-int         count_not_of(const char *str, char symb);
-bool        initTime(timeval* timeout);
-int         printAndExit(const char *message, int code);
-bool        printAndExit(const char *message);
+int			count_not_of(const char *str, char symb);
+BOOL		initTime(struct timeval *timeout);
+int			printAndExit(const char *message, int code);
 uint16_t	GetCSum(const uint8_t *Buf, uint32_t Len, uint16_t StartVal = 0);
 
-bool        prepareTargets(IcmpTargetType *target);
-void        nullifyTargets(IcmpTargetType *target);
+BOOL		prepareTargets(IcmpTargetType *target);
+void		nullifyTargets(IcmpTargetType *target);
 
-void        recyclePacket(IcmpTargetType *target);
-void        clearPacket(IcmpTargetType *target);
-bool        bindingPacket(IcmpTargetType *targets);
+int			printInfo(void);
+void		recyclePacket(IcmpTargetType *target);
+void		clearPacket(IcmpTargetType *target);
+BOOL		bindingPacket(IcmpTargetType *targets);
 
-bool        sender(IcmpTargetType* targets);
-bool        receiver(IcmpTargetType* target);
+BOOL		sender(IcmpTargetType *targets);
+BOOL		receiver(IcmpTargetType *target);
 
-bool        ping(IcmpTargetType *targets);
+BOOL		ping(IcmpTargetType *targets);
 
-# endif
+#endif
