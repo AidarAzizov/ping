@@ -20,7 +20,7 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 				": Name or service not known"));
 	}
 	family = res->ai_family;
-	in = (sockaddr_in *)res->ai_addr;
+	in = (struct sockaddr_in *)res->ai_addr;
 	free(res);
 	if (!inet_ntop(family, &(in->sin_addr),
 			targets->dst_addr, sizeof(targets->dst_addr)))
