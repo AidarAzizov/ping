@@ -36,10 +36,10 @@ BOOL	checkArgs(t_flags *fl)
 		return (printAndExit(" invalid argument for -s flag:"
 				" out of range: 0 <= value <= 127992", FALSE));
 	if (fl->t < 0 || fl->t > 255)
-		return (printAndExit(" invalid argument for -t flag:"
+		return (printAndExit(" invalid argument for -T flag:"
 				" out of range: 0 <= value <= 255", FALSE));
 	if (fl->i < 0.001 || fl->i > 600.)
-		return (printAndExit(" invalid argument for -dt flag:"
+		return (printAndExit(" invalid argument for -i flag:"
 				" out of range: 0.001 <= value <= 600.000", FALSE));
 	return (TRUE);
 }

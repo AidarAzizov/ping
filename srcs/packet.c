@@ -6,12 +6,12 @@ int	printInfo(void)
 {
 	printf("\nUsage\n\tping [options] <destination>\n");
 	printf("\nOptions:\n  <destination>\t\tdns name or ip address");
-	printf("\n  -dt <delay>\t\tinstall <delay>(may "
+	printf("\n  -i <delay>\t\tinstall <delay>(may "
 		"be less than 1.0) time for delay between pings");
 	printf("\n  -c <count>\t\tstop after <count> replies");
 	printf("\n  -h\t\t\tprint help and exit");
 	printf("\n  -s <size>\t\tuse <size> as number of data bytes to be sent");
-	printf("\n  -t <ttl>\t\tdefine time to live");
+	printf("\n  -T <ttl>\t\tdefine time to live");
 	printf("\n  -w <deadline>\t\treply wait <deadline> in seconds");
 	printf("\n");
 	return (SUCCESS_CODE);

@@ -116,7 +116,7 @@ void	parseArgs(t_IcmpTargetType *targets,
 		else if (strncmp(argv[i], "-c", 2) == 0)
 			targets->currFl.inf_c = !(*result
 					= init_count(&targets->currFl.c, &i, argc, argv));
-		else if (strncmp(argv[i], "-i", 3) == 0)
+		else if (strncmp(argv[i], "-i", 2) == 0)
 			*result = init_delaytime(&targets->currFl.i, &i, argc, argv);
 		else
 			*result = printExitWStr(("invalid argument: ", argv[i]), 0);
