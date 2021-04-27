@@ -29,7 +29,7 @@ BOOL	makeDelay(double delay_sec, BOOL *is_firstIter)
 
 BOOL	run(t_IcmpTargetType *targets)
 {
-	int	delta;
+	uint64_t	delta;
 
 	delta = targets->timeaft.tv_sec - targets->timebegin.tv_sec;
 	if (g_work.alreadyend)
