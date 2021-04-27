@@ -47,7 +47,7 @@ void	printHead(t_IcmpTargetType *targets)
 
 	len = targets->currFl.s
 		+ sizeof(struct iphdr) + sizeof(struct icmphdr);
-	printf("PING %s (%s) %lld(%d) bytes of data.\n",
+	printf("PING %s (%s) %ld(%d) bytes of data.\n",
 		targets->addr_from_arg, targets->dst_addr,
 		targets->currFl.s, len);
 }
