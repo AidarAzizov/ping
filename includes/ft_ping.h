@@ -61,6 +61,7 @@ typedef struct s_flags
 	BOOL		inf_c;
 	BOOL		inf_w;
 	BOOL		info;
+	BOOL		more_info;
 }	t_flags;
 
 typedef struct s_mdev
@@ -113,6 +114,8 @@ typedef struct s_IcmpTargetType
 BOOL		INITED(int x);
 double		secondTernare(double tone, double ttwo);
 double		firstTernare(double tone, double ttwo);
+BOOL		PrintAssctdWSeqInfo(const char *real_dst,
+				int _icmp_seq, int _icmp_code);
 
 int			printExitWStr(const char *message, const char *body);
 BOOL		printExitWInt(const char *message, int num);

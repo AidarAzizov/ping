@@ -18,6 +18,7 @@ void	setBaseFlags(t_flags *fl)
 	fl->t = 64;
 	fl->inf_w = TRUE;
 	fl->inf_c = TRUE;
+	fl->more_info = FALSE;
 	fl->i = 1.0;
 	fl->info = FALSE;
 }
