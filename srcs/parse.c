@@ -56,8 +56,9 @@ BOOL	init_delaytime(double *res, int *index, int argc, char *argv[])
 {
 	char	symb;
 
-	if (count_not_of(argv[*index], ' ') > 3
-		&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
+	//if (count_not_of(argv[*index], ' ') > 3
+	//	&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
+	if (sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 		return (TRUE);
 	if (ft_strlen(argv[*index]) > 2)
 		return (printExitWStr("invalid argument: ", argv[*index]));
@@ -118,6 +119,6 @@ void	parseArgs(t_IcmpTargetType *targets,
 		else if (ft_strncmp(argv[i], "-i", 2) == 0)
 			*result = init_delaytime(&targets->currFl.i, &i, argc, argv);
 		else
-			*result = printExitWStr("invalid argument1: ", argv[i]);
+			*result = printExitWStr("invalid argument: ", argv[i]);
 	}
 }
