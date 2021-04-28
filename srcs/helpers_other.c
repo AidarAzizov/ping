@@ -26,10 +26,10 @@ BOOL	initTime(struct timeval *timeout)
 	return (TRUE);
 }
 
-BOOL	PrintAssctdWSeqInfo(const char *real_dst,
+BOOL	PrintAssctdWSeqInfo(uint32_t real_dst,
 			int _icmp_seq, int _icmp_code)
 {
-	printf("From %s icmp_seq=%d ", real_dst, _icmp_seq);
+	printk("From %pI4 icmp_seq=%d ", real_dst, _icmp_seq);
 	if (_icmp_code == ICMP_UNREACH)
 		printf("destination unreachable");
 	if (_icmp_code == ICMP_SOURCEQUENCH)

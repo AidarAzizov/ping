@@ -6,6 +6,7 @@
 # include <stdint.h>
 # include <time.h>
 
+# include <linux/kernel.h>
 # include <stdlib.h>
 # include <errno.h>
 # include <unistd.h>
@@ -114,7 +115,7 @@ typedef struct s_IcmpTargetType
 BOOL		INITED(int x);
 double		secondTernare(double tone, double ttwo);
 double		firstTernare(double tone, double ttwo);
-BOOL		PrintAssctdWSeqInfo(const char *real_dst,
+BOOL		PrintAssctdWSeqInfo(uint32_t,
 				int _icmp_seq, int _icmp_code);
 
 int			printExitWStr(const char *message, const char *body);
