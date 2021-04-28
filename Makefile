@@ -3,7 +3,7 @@ NAME = ft_ping
 
 FLAGS = -Wall -Wextra -Werror -lm
 
-FUNC = helpers helpers_other main packet parse ping prepare print sendrecv socket
+FUNC = helpers helpers_other main packet parse ping prepare print sendrecv socket lib
 
 HEADER = -I includes/
 
