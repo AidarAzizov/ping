@@ -71,25 +71,27 @@ int	main(int argc, char *argv[])
 {
 	t_IcmpTargetType	targets;
 	BOOL				res;
+	BOOL				SuccCode;
 
+	SuccCode = SUCCESS_CODE;
 	res = TRUE;
 	signal(SIGALRM, setSignal);
 	signal(SIGINT, setSignal);
 	while (1)
 	{
 		if (!baseInit(&targets, argc, argv))
-			return (ERROR_CODE);
+			SuccCode = ERROR_CODE;
 		parseArgs(&targets, argc - 1, argv + 1, &res);
-		if (targets.currFl.info)
-			return (printInfo());
-		if (!res || !checkArgs(&targets.currFl))
-			return (ERROR_CODE);
-		if (!bindingPacket(&targets))
-			return (ERROR_CODE);
-		if (!ping(&targets))
-			return (ERROR_CODE);
+		if (SuccCode && targets.currFl.info)
+			SuccCode = printInfo();
+		if (SuccCode && (!res || !checkArgs(&targets.currFl)))
+			SuccCode = ERROR_CODE;
+		if (SuccCode && !bindingPacket(&targets))
+			SuccCode = ERROR_CODE;
+		if (SuccCode && !ping(&targets))
+			SuccCode = ERROR_CODE;
 		break;
 	}
 	clearPacket(&targets);
-	return (SUCCESS_CODE);
+	return (SuccCode);
 }
