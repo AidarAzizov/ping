@@ -60,7 +60,7 @@ BOOL	init_delaytime(double *res, int *index, int argc, char *argv[])
 	char	symb;
 
 	if (count_not_of(argv[*index], ' ') > 3
-		&& sscanf(argv[*index], " -dt %lf %c ", res, &symb) == 1)
+		&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 		return (TRUE);
 	(*index)++;
 	if (*index >= argc)

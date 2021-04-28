@@ -4,7 +4,7 @@ extern t_mypair	g_work;
 
 int	printInfo(void)
 {
-	printf("\nUsage\n\tping [options] <destination>\n");
+	printf("\nUsage:\n\tping [options] <destination>\n");
 	printf("\nOptions:\n  <destination>\t\tdns name or ip address");
 	printf("\n  -i <delay>\t\tinstall <delay>(may "
 		"be less than 1.0) time for delay between pings");
