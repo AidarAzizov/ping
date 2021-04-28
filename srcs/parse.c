@@ -88,7 +88,10 @@ BOOL	init_addr(t_IcmpTargetType *targets, const char *arg)
 		return (TRUE);
 	}
 	else if (sscanf(arg, " %s %c", targets->addr_from_arg, &symb) == 1)
-		return (targets->addr_from_arg_host = HostToIP(targets));
+	{
+		targets->addr_from_arg_host = HostToIP(targets);
+		return (targets->addr_from_arg_host);
+	}
 	free(targets->addr_from_arg);
 	return (printExitWStr(arg, ": Name or service not known"));
 }
