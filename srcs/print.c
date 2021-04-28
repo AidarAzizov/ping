@@ -11,7 +11,7 @@ BOOL	checkHeader(const t_IcmpTargetType *target)
 		|| ip_h->protocol != target->_ip->protocol
 		|| ip_h->tot_len != target->_ip->tot_len
 		|| icmp_h->un.echo.id != target->_icmp->un.echo.id
-		|| icmp_h->un.echo.sequence != target->_icmp->un.echo.sequence)
+		|| icmp_h->un.echo.sequence != target->_icmp->un.echo.sequence + 1)
 	{
 		if (icmp_h->type != ICMP_ECHOREPLY)
 			return (PrintAssctdWSeqInfo(ip_h->saddr,
