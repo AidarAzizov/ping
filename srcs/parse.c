@@ -12,7 +12,6 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	hints.ai_socktype = SOCK_RAW;
 	hints.ai_protocol = IPPROTO_ICMP;
 	ft_memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
-	printf("%s\n", targets->addr_from_arg);
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
 		if (res)
@@ -57,8 +56,6 @@ BOOL	init_delaytime(double *res, int *index, int argc, char *argv[])
 {
 	char	symb;
 
-	//if (count_not_of(argv[*index], ' ') > 3
-	//	&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 	if (sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 		return (TRUE);
 	if (ft_strlen(argv[*index]) > 2)

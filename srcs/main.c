@@ -46,8 +46,9 @@ BOOL	checkArgs(t_flags *fl)
 
 BOOL	baseInit(t_IcmpTargetType *targets, int argc, char *argv[])
 {
+	signal(SIGALRM, setSignal);
+	signal(SIGINT, setSignal);
 	targets->uid = getuid();
-
 	targets->addr_from_arg = NULL;
 	targets->_addrinfo = NULL;
 	targets->packToSend = NULL;
@@ -75,8 +76,6 @@ int	main(int argc, char *argv[])
 
 	SuccCode = SUCCESS_CODE;
 	res = TRUE;
-	signal(SIGALRM, setSignal);
-	signal(SIGINT, setSignal);
 	while (1)
 	{
 		if (!baseInit(&targets, argc, argv))
@@ -91,7 +90,7 @@ int	main(int argc, char *argv[])
 			SuccCode = ERROR_CODE;
 		if (SuccCode == SUCCESS_CODE && !ping(&targets))
 			SuccCode = ERROR_CODE;
-		break;
+		break ;
 	}
 	clearPacket(&targets);
 	return (SuccCode);
