@@ -60,7 +60,7 @@ BOOL	prepareTargets(t_IcmpTargetType *target)
 	payloadLength = target->currFl.s;
 	offset = sizeof(struct iphdr) + sizeof(struct icmphdr);
 	i = 0;
-	while (i++ < payloadLength)
+	while (++i < payloadLength)
 		target->packToSend[offset + i] = (char)i;
 	return (TRUE);
 }
