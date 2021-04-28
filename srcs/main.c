@@ -82,13 +82,13 @@ int	main(int argc, char *argv[])
 		if (!baseInit(&targets, argc, argv))
 			SuccCode = ERROR_CODE;
 		parseArgs(&targets, argc - 1, argv + 1, &res);
-		if (SuccCode && targets.currFl.info)
+		if (SuccCode == SUCCESS_CODE && targets.currFl.info)
 			SuccCode = printInfo();
-		if (SuccCode && (!res || !checkArgs(&targets.currFl)))
+		if (SuccCode == SUCCESS_CODE && (!res || !checkArgs(&targets.currFl)))
 			SuccCode = ERROR_CODE;
-		if (SuccCode && !bindingPacket(&targets))
+		if (SuccCode == SUCCESS_CODE && !bindingPacket(&targets))
 			SuccCode = ERROR_CODE;
-		if (SuccCode && !ping(&targets))
+		if (SuccCode == SUCCESS_CODE && !ping(&targets))
 			SuccCode = ERROR_CODE;
 		break;
 	}
