@@ -1,4 +1,4 @@
-NAME = push_swap
+NAME = ft_ping
 
 
 FLAGS = -Wall -Wextra -Werror
@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 	@gcc $(FLAGS) -o $(NAME) $(OBJ) $(HEADER)
 	@echo "$(GREEN)(•̀ᴗ•́)و $(NAME) generated!"
 
-build/%.o: src/%.c includes/push_swap.h
+build/%.o: srcs/%.c includes/ft_ping.h
 	@gcc $(FLAGS) -o $@ -c $< $(HEADER)
 
 norm :
