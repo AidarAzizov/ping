@@ -91,6 +91,9 @@
 		<Unit filename="/Users/asusan/Desktop/gits/ft_ping/srcs/helpers_other.c">
 			<Option target="ft_ping"/>
 		</Unit>
+		<Unit filename="/Users/asusan/Desktop/gits/ft_ping/srcs/lib.c">
+			<Option target="ft_ping"/>
+		</Unit>
 		<Unit filename="/Users/asusan/Desktop/gits/ft_ping/srcs/main.c">
 			<Option target="ft_ping"/>
 		</Unit>

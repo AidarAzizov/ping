@@ -1,7 +1,6 @@
 #ifndef FT_PING_H
 # define FT_PING_H
 
-# include <string.h>
 # include <stdio.h>
 # include <stdint.h>
 # include <time.h>
@@ -110,6 +109,12 @@ typedef struct s_IcmpTargetType
 	char			*packToSend;
 	uint16_t		packlen;
 }	t_IcmpTargetType;
+
+size_t		ft_strlen(char const *s);
+int			ft_strncmp(const char *s1, const char *s2, unsigned int n);
+void		*ft_memset(void *destination, int c, size_t n);
+char		*ft_strcpy(char *s1, const char *s2);
+int			ft_strcmp(const char *s1, const char *s2);
 
 BOOL		INITED(int x);
 double		secondTernare(double tone, double ttwo);

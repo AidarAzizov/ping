@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ft_ping.dir/srcs/helpers.c.o"
   "CMakeFiles/ft_ping.dir/srcs/helpers_other.c.o"
+  "CMakeFiles/ft_ping.dir/srcs/lib.c.o"
   "CMakeFiles/ft_ping.dir/srcs/main.c.o"
   "CMakeFiles/ft_ping.dir/srcs/packet.c.o"
   "CMakeFiles/ft_ping.dir/srcs/parse.c.o"

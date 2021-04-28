@@ -8,6 +8,7 @@ include_directories(includes)
 add_executable(ft_ping
         includes/ft_ping.h
         srcs/helpers.c
+        srcs/lib.c
         srcs/helpers_other.c
         srcs/main.c
         srcs/packet.c

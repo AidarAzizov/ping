@@ -44,7 +44,7 @@ BOOL	isValidPacket(t_IcmpTargetType *target)
 		return (printAndExit("Appeared network error with try to ping", FALSE));
 	if (res != temp)
 		return (printAndExit("In received header checksum is not true", FALSE));
-	if (strncmp(target->packToRecv + offset, target->packToSend + offset,
+	if (ft_strncmp(target->packToRecv + offset, target->packToSend + offset,
 			 target->currFl.s) != 0)
 		return (printAndExit("Payload is not the same like original", FALSE));
 	return (TRUE);
@@ -73,7 +73,7 @@ void	printBody(t_IcmpTargetType *target)
 	time = (double)(target->timeaft.tv_sec - target->timebef.tv_sec) *1000.
 		+ (double)(target->timeaft.tv_usec - target->timebef.tv_usec) / 1000.;
 	packlen = target->packlen - sizeof(struct iphdr);
-	if (strcmp(target->addr_from_arg, target->dst_addr) == 0)
+	if (ft_strcmp(target->addr_from_arg, target->dst_addr) == 0)
 		printf("%d bytes from %s: icmp_seq=%d ttl=%d time=%.1f ms\n",
 			packlen, target->dst_addr, target->_icmp->un.echo.sequence,
 			ip_h->ttl, time);

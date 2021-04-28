@@ -196,6 +196,33 @@ srcs/helpers_other.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_ping.dir/build.make CMakeFiles/ft_ping.dir/srcs/helpers_other.c.s
 .PHONY : srcs/helpers_other.c.s
 
+srcs/lib.o: srcs/lib.c.o
+
+.PHONY : srcs/lib.o
+
+# target to build an object file
+srcs/lib.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_ping.dir/build.make CMakeFiles/ft_ping.dir/srcs/lib.c.o
+.PHONY : srcs/lib.c.o
+
+srcs/lib.i: srcs/lib.c.i
+
+.PHONY : srcs/lib.i
+
+# target to preprocess a source file
+srcs/lib.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_ping.dir/build.make CMakeFiles/ft_ping.dir/srcs/lib.c.i
+.PHONY : srcs/lib.c.i
+
+srcs/lib.s: srcs/lib.c.s
+
+.PHONY : srcs/lib.s
+
+# target to generate assembly for a file
+srcs/lib.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_ping.dir/build.make CMakeFiles/ft_ping.dir/srcs/lib.c.s
+.PHONY : srcs/lib.c.s
+
 srcs/main.o: srcs/main.c.o
 
 .PHONY : srcs/main.o
@@ -427,6 +454,9 @@ help:
 	@echo "... srcs/helpers_other.o"
 	@echo "... srcs/helpers_other.i"
 	@echo "... srcs/helpers_other.s"
+	@echo "... srcs/lib.o"
+	@echo "... srcs/lib.i"
+	@echo "... srcs/lib.s"
 	@echo "... srcs/main.o"
 	@echo "... srcs/main.i"
 	@echo "... srcs/main.s"

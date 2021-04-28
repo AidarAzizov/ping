@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/asusan/Desktop/gits/ft_ping/srcs/helpers.c" "/Users/asusan/Desktop/gits/ft_ping/cmake-build-debug/CMakeFiles/ft_ping.dir/srcs/helpers.c.o"
   "/Users/asusan/Desktop/gits/ft_ping/srcs/helpers_other.c" "/Users/asusan/Desktop/gits/ft_ping/cmake-build-debug/CMakeFiles/ft_ping.dir/srcs/helpers_other.c.o"
+  "/Users/asusan/Desktop/gits/ft_ping/srcs/lib.c" "/Users/asusan/Desktop/gits/ft_ping/cmake-build-debug/CMakeFiles/ft_ping.dir/srcs/lib.c.o"
   "/Users/asusan/Desktop/gits/ft_ping/srcs/main.c" "/Users/asusan/Desktop/gits/ft_ping/cmake-build-debug/CMakeFiles/ft_ping.dir/srcs/main.c.o"
   "/Users/asusan/Desktop/gits/ft_ping/srcs/packet.c" "/Users/asusan/Desktop/gits/ft_ping/cmake-build-debug/CMakeFiles/ft_ping.dir/srcs/packet.c.o"
   "/Users/asusan/Desktop/gits/ft_ping/srcs/parse.c" "/Users/asusan/Desktop/gits/ft_ping/cmake-build-debug/CMakeFiles/ft_ping.dir/srcs/parse.c.o"

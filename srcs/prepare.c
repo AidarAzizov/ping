@@ -25,8 +25,8 @@ BOOL	ip_prepare(t_IcmpTargetType *target)
 
 void	msg_prepare(t_IcmpTargetType *target)
 {
-	memset(target->packToRecv, 0, target->packlen);
-	memset(&target->msg, 0, sizeof(struct msghdr));
+	ft_memset(target->packToRecv, 0, target->packlen);
+	ft_memset(&target->msg, 0, sizeof(struct msghdr));
 	target->msg.msg_iovlen = 1;
 	target->msg.msg_name = target->_addrinfo->ai_addr;
 	target->msg.msg_namelen = target->_addrinfo->ai_addrlen;
@@ -50,7 +50,7 @@ BOOL	prepareTargets(t_IcmpTargetType *target)
 	size_t		offset;
 	uint16_t	payloadLength;
 
-	strcpy(target->src_addr, LOCALHOST);
+	ft_strcpy(target->src_addr, LOCALHOST);
 	if (!ip_prepare(target))
 		return (FALSE);
 	icmp_prepare(target);
@@ -67,11 +67,11 @@ BOOL	prepareTargets(t_IcmpTargetType *target)
 
 void	nullifyTargets(t_IcmpTargetType *target)
 {
-	memset(&target->iov, 0, sizeof(target->iov));
-	memset(&target->_ip->saddr, 0, sizeof(in_addr_t));
-	memset(&target->_ip->daddr, 0, sizeof(in_addr_t));
-	memset(target->packToSend, 0, target->packlen);
-	memset(&target->hints, 0, sizeof(struct addrinfo));
+	ft_memset(&target->iov, 0, sizeof(target->iov));
+	ft_memset(&target->_ip->saddr, 0, sizeof(in_addr_t));
+	ft_memset(&target->_ip->daddr, 0, sizeof(in_addr_t));
+	ft_memset(target->packToSend, 0, target->packlen);
+	ft_memset(&target->hints, 0, sizeof(struct addrinfo));
 	target->_addrinfo = NULL;
 	target->_socket = -1;
 	target->pinfo.avg = 0.0;

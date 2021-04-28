@@ -11,7 +11,7 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_RAW;
 	hints.ai_protocol = IPPROTO_ICMP;
-	memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
+	ft_memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
 		if (res)
@@ -38,7 +38,7 @@ BOOL	init_count(uint64_t *res, int *index, int argc, char *argv[])
 	checker = 0;
 	if (sscanf(argv[*index], " -%c %ld %c ", &flag, res, &symb) == 2)
 		return (TRUE);
-	if (strlen(argv[*index]) > 2)
+	if (ft_strlen(argv[*index]) > 2)
 		return (printExitWStr("invalid argument: ", argv[*index]));
 	(*index)++;
 	if (*index >= argc)
@@ -59,7 +59,7 @@ BOOL	init_delaytime(double *res, int *index, int argc, char *argv[])
 	if (count_not_of(argv[*index], ' ') > 3
 		&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 		return (TRUE);
-	if (strlen(argv[*index]) > 2)
+	if (ft_strlen(argv[*index]) > 2)
 		return (printExitWStr("invalid argument: ", argv[*index]));
 	(*index)++;
 	if (*index >= argc)
@@ -79,12 +79,12 @@ BOOL	init_addr(t_IcmpTargetType *targets, const char *arg)
 	if (!targets->addr_from_arg)
 		return (printAndExit("Bad with allocate memory", FALSE));
 	targets->addr_from_arg_host = FALSE;
-	memset(targets->addr_from_arg, 0, NI_MAXHOST);
+	ft_memset(targets->addr_from_arg, 0, NI_MAXHOST);
 	if (sscanf(arg, "%hhu.%hhu.%hhu.%hhu%c",
 			&IPcheck.i1, &IPcheck.i2, &IPcheck.i3, &IPcheck.i4, &symb) == 4)
 	{
-		strcpy(targets->addr_from_arg, arg);
-		strcpy(targets->dst_addr, arg);
+		ft_strcpy(targets->addr_from_arg, arg);
+		ft_strcpy(targets->dst_addr, arg);
 		return (TRUE);
 	}
 	else if (sscanf(arg, " %s %c", targets->addr_from_arg, &symb) == 1)
@@ -101,21 +101,21 @@ void	parseArgs(t_IcmpTargetType *targets,
 	i = 0;
 	while (*result && ++i < argc)
 	{
-		if (strncmp(argv[i], "-h", 2) == 0 && strlen(argv[i]) == 0)
+		if (ft_strncmp(argv[i], "-h", 2) == 0 && ft_strlen(argv[i]) == 2)
 			targets->currFl.info = TRUE;
-		else if (strncmp(argv[i], "-v", 2) == 0)
+		else if (ft_strncmp(argv[i], "-v", 2) == 0)
 			targets->currFl.more_info = TRUE;
-		else if (strncmp(argv[i], "-w", 2) == 0)
+		else if (ft_strncmp(argv[i], "-w", 2) == 0)
 			targets->currFl.inf_w = !(*result
 					= init_count(&targets->currFl.w, &i, argc, argv));
-		else if (strncmp(argv[i], "-s", 2) == 0)
+		else if (ft_strncmp(argv[i], "-s", 2) == 0)
 			*result = init_count(&targets->currFl.s, &i, argc, argv);
-		else if (strncmp(argv[i], "-t", 2) == 0)
+		else if (ft_strncmp(argv[i], "-t", 2) == 0)
 			*result = init_count(&targets->currFl.t, &i, argc, argv);
-		else if (strncmp(argv[i], "-c", 2) == 0)
+		else if (ft_strncmp(argv[i], "-c", 2) == 0)
 			targets->currFl.inf_c = !(*result
 					= init_count(&targets->currFl.c, &i, argc, argv));
-		else if (strncmp(argv[i], "-i", 2) == 0)
+		else if (ft_strncmp(argv[i], "-i", 2) == 0)
 			*result = init_delaytime(&targets->currFl.i, &i, argc, argv);
 		else
 			*result = printExitWStr("invalid argument: ", argv[i]);
