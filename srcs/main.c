@@ -47,6 +47,12 @@ BOOL	checkArgs(t_flags *fl)
 BOOL	baseInit(t_IcmpTargetType *targets, int argc, char *argv[])
 {
 	targets->uid = getuid();
+
+	targets->addr_from_arg = NULL;
+	targets->_addrinfo = NULL;
+	targets->packToSend = NULL;
+	targets->packToRecv = NULL;
+	targets->_socket = -1;
 	if (argc == 1)
 	{
 		printInfo();
@@ -69,17 +75,21 @@ int	main(int argc, char *argv[])
 	res = TRUE;
 	signal(SIGALRM, setSignal);
 	signal(SIGINT, setSignal);
-	if (!baseInit(&targets, argc, argv))
-		return (ERROR_CODE);
-	parseArgs(&targets, argc - 1, argv + 1, &res);
-	if (targets.currFl.info)
-		return (printInfo());
-	if (!res || !checkArgs(&targets.currFl))
-		return (ERROR_CODE);
-	if (!bindingPacket(&targets))
-		return (ERROR_CODE);
-	if (!ping(&targets))
-		return (ERROR_CODE);
+	while (1)
+	{
+		if (!baseInit(&targets, argc, argv))
+			return (ERROR_CODE);
+		parseArgs(&targets, argc - 1, argv + 1, &res);
+		if (targets.currFl.info)
+			return (printInfo());
+		if (!res || !checkArgs(&targets.currFl))
+			return (ERROR_CODE);
+		if (!bindingPacket(&targets))
+			return (ERROR_CODE);
+		if (!ping(&targets))
+			return (ERROR_CODE);
+		break;
+	}
 	clearPacket(&targets);
 	return (SUCCESS_CODE);
 }

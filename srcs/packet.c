@@ -52,10 +52,7 @@ BOOL	bindingPacket(t_IcmpTargetType *targets)
 		return (printAndExit("System error. Bad allocate memory", FALSE));
 	targets->packToRecv = (char *)malloc(sizeof(char) * targets->packlen);
 	if (!targets->packToRecv)
-	{
-		free(targets->packToSend);
 		return (printAndExit("System error. Bad allocate memory", FALSE));
-	}
 	targets->_ip = (struct iphdr *)targets->packToSend;
 	targets->_icmp = (struct icmphdr *)(targets->packToSend
 			+ sizeof(struct iphdr));
