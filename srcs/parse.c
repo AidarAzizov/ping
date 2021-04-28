@@ -12,6 +12,7 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	hints.ai_socktype = SOCK_RAW;
 	hints.ai_protocol = IPPROTO_ICMP;
 	ft_memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
+	printf("%s\n", targets->addr_from_arg);
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
 		if (res)
