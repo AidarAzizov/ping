@@ -48,8 +48,10 @@ BOOL	baseInit(t_IcmpTargetType *targets, int argc, char *argv[])
 {
 	targets->uid = getuid();
 	if (argc == 1)
-		return (printAndExit("usage error:"
-				"Destination address required", FALSE));
+	{
+		printInfo();
+		return (FALSE);
+	}
 	if (targets->uid != ROOT_UID)
 		return (printAndExit("Launch this program from "
 				"root for create RAW socket\n", FALSE));
