@@ -19,7 +19,6 @@ int	printInfo(void)
 
 void	recyclePacket(t_IcmpTargetType *target)
 {
-	target->_icmp->un.echo.sequence++;
 	target->_icmp->checksum = 0;
 	target->_icmp->checksum = ~GetCSum((uint8_t *)target->_icmp,
 			sizeof(struct icmphdr) + target->currFl.s, 0);

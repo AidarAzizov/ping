@@ -37,7 +37,7 @@ void	msg_prepare(t_IcmpTargetType *target)
 
 void	icmp_prepare(t_IcmpTargetType *target)
 {
-	target->_icmp->un.echo.sequence = 0;
+	target->_icmp->un.echo.sequence = 1;
 	target->_icmp->type = ICMP_ECHO;
 	target->_icmp->un.echo.id = 1;
 	target->_icmp->checksum = 0;
