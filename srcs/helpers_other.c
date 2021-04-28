@@ -29,29 +29,27 @@ BOOL	initTime(struct timeval *timeout)
 BOOL	PrintAssctdWSeqInfo(uint32_t real_dst,
 			int _icmp_seq, int _icmp_code)
 {
-	char str[INET_ADDRSTRLEN];
+	char	str[INET_ADDRSTRLEN];
 
 	inet_ntop(AF_INET, &real_dst, str, INET_ADDRSTRLEN);
 	printf("From %s icmp_seq=%d ", str, _icmp_seq);
 	if (_icmp_code == ICMP_UNREACH)
-		printf("destination unreachable");
-	if (_icmp_code == ICMP_SOURCEQUENCH)
-		printf("packet lost");
-	if (_icmp_code == ICMP_REDIRECT)
-		printf("redirect code");
-	if (_icmp_code == ICMP_ECHO)
-		printf("echo service");
-	if (_icmp_code == ICMP_ROUTERADVERT)
-		printf("router advertisement");
-	if (_icmp_code == ICMP_ROUTERSOLICIT)
-		printf("router solicitation");
-	if (_icmp_code == ICMP_TIMXCEED)
-		printf("time to live exceeded");
-	if (_icmp_code == ICMP_PARAMPROB)
-		printf("parameter-problem");
-	if (_icmp_code == ICMP_TSTAMP)
-		printf("timestamp request");
-	if (_icmp_code == ICMP_TSTAMP)
-		printf("timestamp request");
+		printf("destination unreachable\n");
+	else if (_icmp_code == ICMP_SOURCEQUENCH)
+		printf("packet lost\n");
+	else if (_icmp_code == ICMP_REDIRECT)
+		printf("redirect code\n");
+	else if (_icmp_code == ICMP_ECHO)
+		printf("echo service\n");
+	else if (_icmp_code == ICMP_ROUTERADVERT)
+		printf("router advertisement\n");
+	else if (_icmp_code == ICMP_ROUTERSOLICIT)
+		printf("router solicitation\n");
+	else if (_icmp_code == ICMP_TIMXCEED)
+		printf("time to live exceeded\n");
+	else if (_icmp_code == ICMP_PARAMPROB)
+		printf("parameter-problem\n");
+	else if (_icmp_code == ICMP_TSTAMP)
+		printf("timestamp request\n");
 	return (FALSE);
 }
