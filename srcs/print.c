@@ -28,6 +28,7 @@ BOOL	isValidPacket(t_IcmpTargetType *target)
 	size_t			offset;
 	uint16_t		res;
 
+	target->_icmp->un.echo.sequence++;
 	if (!checkHeader(target))
 		return (FALSE);
 	icmp_h = (struct icmphdr *)(target->packToRecv + sizeof(struct iphdr));
