@@ -11,7 +11,7 @@ int	printInfo(void)
 	printf("\n  -c <count>\t\tstop after <count> replies");
 	printf("\n  -h\t\t\tprint help and exit");
 	printf("\n  -s <size>\t\tuse <size> as number of data bytes to be sent");
-	printf("\n  -T <ttl>\t\tdefine time to live");
+	printf("\n  -t <ttl>\t\tdefine time to live");
 	printf("\n  -w <deadline>\t\treply wait <deadline> in seconds");
 	printf("\n");
 	return (SUCCESS_CODE);
