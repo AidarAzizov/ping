@@ -3,10 +3,14 @@
 
 void ClearAddrinfo(struct addrinfo *res)
 {
+	struct addrinfo *temp;
+
 	while (res != NULL)
 	{
-		freeaddrinfo(res);
+		temp = res;
 		res = res->ai_next;
+		freeaddrinfo(temp);
+		temp = NULL;
 	}
 }
 
