@@ -21,7 +21,7 @@ YELLOW = \033[0;33m
 all: .PHONY $(NAME)
 
 .PHONY:
-    @mkdir -p build
+	@mkdir -p build
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN)(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Compiling progect... Wait a sec."
