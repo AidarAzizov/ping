@@ -18,23 +18,23 @@ all: .PHONY $(NAME)
 	@mkdir -p build
 
 $(NAME): $(OBJ)
-	@gcc $(FLAGS) -o $(NAME) $(OBJ) $(HEADER)
-	@echo "(•̀ᴗ•́)و $(NAME) generated!"
+	gcc $(FLAGS) -o $(NAME) $(OBJ) $(HEADER)
+	echo "(•̀ᴗ•́)و $(NAME) generated!"
 
 build/%.o: srcs/%.c includes/ft_ping.h
-	@gcc $(FLAGS) -o $@ -c $< $(HEADER)
+	gcc $(FLAGS) -o $@ -c $< $(HEADER)
 
 norm :
-	@norminette $(SRC)
+	norminette $(SRC)
 
 clean:
-	@/bin/rm -f $(OBJ)
-	@rm -rf build
-	@echo "  OBJ files have been deleted."
+	/bin/rm -f $(OBJ)
+	rm -rf build
+	echo "  OBJ files have been deleted."
 
 fclean: clean
-	@make fclean -C libft
-	@/bin/rm -f $(NAME)
-	@echo "  $(NAME) have been deleted."
+	make fclean -C libft
+	/bin/rm -f $(NAME)
+	echo "  $(NAME) have been deleted."
 
 re: fclean all
