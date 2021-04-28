@@ -11,11 +11,11 @@ BOOL	checkHeader(const t_IcmpTargetType *target)
 		|| ip_h->protocol != target->_ip->protocol
 		|| ip_h->tot_len != target->_ip->tot_len
 		|| icmp_h->un.echo.id != target->_icmp->un.echo.id
-		|| icmp_h->un.echo.sequence != target->_icmp->un.echo.sequence - 1)
+		|| icmp_h->un.echo.sequence != target->_icmp->un.echo.sequence)
 	{
 		if (icmp_h->type != ICMP_ECHOREPLY)
 			return (PrintAssctdWSeqInfo(ip_h->saddr,
-				target->_icmp->un.echo.sequence - 1, icmp_h->type));
+				target->_icmp->un.echo.sequence, icmp_h->type));
 		return (printAndExit("Received packet with wrong header", FALSE));
 	}
 	return (TRUE);
@@ -28,8 +28,9 @@ BOOL	isValidPacket(t_IcmpTargetType *target)
 	size_t			offset;
 	uint16_t		res;
 
+	res = checkHeader(target);
 	target->_icmp->un.echo.sequence++;
-	if (!checkHeader(target))
+	if (res == FALSE)
 		return (FALSE);
 	icmp_h = (struct icmphdr *)(target->packToRecv + sizeof(struct iphdr));
 	offset = sizeof(struct iphdr) + sizeof(struct icmphdr);
