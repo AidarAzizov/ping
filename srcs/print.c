@@ -102,9 +102,9 @@ void	printTail(t_IcmpTargetType *target)
 		percent_of_lost = 0;
 	else
 		percent_of_lost = 100 - ((target->pinfo.received * 100)
-				/ target->_icmp->un.echo.sequence);
+				/ (target->_icmp->un.echo.sequence - 1));
 	printf("%d packets transmitted, %d received, %d%% packet loss, time %d ms\n",
-		target->_icmp->un.echo.sequence, target->pinfo.received,
+		target->_icmp->un.echo.sequence - 1, target->pinfo.received,
 		percent_of_lost, ms);
 	target->pinfo.avg /= target->pinfo.received;
 	target->pinfo.mdev.sum /= target->pinfo.received;
