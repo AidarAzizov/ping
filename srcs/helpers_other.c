@@ -36,8 +36,6 @@ BOOL	PrintAssctdWSeqInfo(const char *real_dst,
 		printf("packet lost");
 	if (_icmp_code == ICMP_REDIRECT)
 		printf("redirect code");
-	if (_icmp_code == ICMP_ALTHOSTADDR)
-		printf("alternate-address");
 	if (_icmp_code == ICMP_ECHO)
 		printf("echo service");
 	if (_icmp_code == ICMP_ROUTERADVERT)
