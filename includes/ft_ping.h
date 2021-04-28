@@ -114,7 +114,7 @@ typedef struct s_IcmpTargetType
 BOOL		INITED(int x);
 double		secondTernare(double tone, double ttwo);
 double		firstTernare(double tone, double ttwo);
-BOOL		PrintAssctdWSeqInfo(uint32_t,
+BOOL		PrintAssctdWSeqInfo(uint32_t real_dst,
 				int _icmp_seq, int _icmp_code);
 
 int			printExitWStr(const char *message, const char *body);
