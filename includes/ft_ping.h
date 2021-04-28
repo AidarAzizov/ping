@@ -6,7 +6,6 @@
 # include <stdint.h>
 # include <time.h>
 
-# include <linux/kernel.h>
 # include <stdlib.h>
 # include <errno.h>
 # include <unistd.h>
