@@ -71,12 +71,12 @@ BOOL	ping(t_IcmpTargetType *targets)
 			continue ;
 		if (!initTime(&targets->timebef))
 			return (FALSE);
-		alarm(targets->currFl.w);
 		if (!receiver(targets))
 			continue ;
 		if (!initTime(&targets->timeaft))
 			return (FALSE);
 		printBody(targets);
+		targets->_icmp->un.echo.sequence++;
 	}
 	if (!initTime(&targets->timeend))
 		return (FALSE);

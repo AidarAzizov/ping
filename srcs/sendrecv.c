@@ -27,6 +27,7 @@ BOOL	receiver(t_IcmpTargetType *target)
 	ssize_t		howReceived;
 
 	howReceived = -1;
+	alarm(target->currFl.w);
 	while (g_work.stillwait && !g_work.alreadyend && howReceived == -1)
 		howReceived = recvmsg(target->_socket, &target->msg, MSG_DONTWAIT);
 	alarm(0);
