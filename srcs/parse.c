@@ -37,12 +37,9 @@ BOOL	init_count(uint64_t *res, int *index, int argc, char *argv[])
 
 	checker = 0;
 	if (sscanf(argv[*index], " -%c %ld %c ", &flag, res, &symb) == 2)
-	{
-		sscanf(argv[*index], " -%c %ld %c ", &flag, &checker, &symb);
-		if (*res != checker)
-			return (printExitWInt("invalid argument: ", (int)checker));
 		return (TRUE);
-	}
+	if (strlen(argv[*index]) > 2)
+		return (printExitWStr("invalid argument: ", argv[*index]));
 	(*index)++;
 	if (*index >= argc)
 		return (printExitWStr("option requires an argument -- ",
