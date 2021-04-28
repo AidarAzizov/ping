@@ -99,7 +99,7 @@ void	parseArgs(t_IcmpTargetType *targets,
 	int	i;
 
 	i = 0;
-	while (!targets->currFl.info && *result && ++i < argc)
+	while (*result && ++i < argc)
 	{
 		if (strncmp(argv[i], "-h", 2) == 0)
 			targets->currFl.info = TRUE;
