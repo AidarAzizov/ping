@@ -33,7 +33,6 @@ clean:
 	echo "  OBJ files have been deleted."
 
 fclean: clean
-	make fclean -C libft
 	/bin/rm -f $(NAME)
 	echo "  $(NAME) have been deleted."
 
