@@ -62,6 +62,8 @@ BOOL	init_delaytime(double *res, int *index, int argc, char *argv[])
 	if (count_not_of(argv[*index], ' ') > 3
 		&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 		return (TRUE);
+	if (strlen(argv[*index]) > 2)
+		return (printExitWStr("invalid argument: '", argv[*index]));
 	(*index)++;
 	if (*index >= argc)
 		return (printExitWStr("option requires an argument -- '",
