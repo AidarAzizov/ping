@@ -1,7 +1,7 @@
 NAME = ft_ping
 
 
-FLAGS = -Wall -Wextra -Werror -lm
+FLAGS = -Wall -Wextra -Werror
 
 FUNC = helpers helpers_other main packet parse ping prepare print sendrecv socket lib
 
@@ -18,11 +18,11 @@ all: .PHONY $(NAME)
 	@mkdir -p build
 
 $(NAME): $(OBJ)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) $(HEADER)
+	gcc $(FLAGS) -o $(NAME) $(OBJ) -lm $(HEADER)
 	echo "(•̀ᴗ•́)و $(NAME) generated!"
 
 build/%.o: srcs/%.c includes/ft_ping.h
-	gcc $(FLAGS) -o $@ -c $< $(HEADER)
+	gcc $(FLAGS) -o $@ -lm -c $< $(HEADER)
 
 norm :
 	norminette $(SRC)
