@@ -16,15 +16,13 @@ int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 	int				r;
 
 	r = 0;
-	while ((s1[i] || s2[i]) && r == 0 && i < n)
+	while ((s1[i] && s2[i]) && i < n)
 	{
-		if (s1[i] != s2[i])
-		{
-			r = s1[i] - s2[i];
-		}
-		i++;
+		r = s1[i] - s2[i];
+		if (!r)
+			return (r);
 	}
-	return (r);
+	return (0);
 }
 
 void	*ft_memset(void *destination, int c, size_t n)
