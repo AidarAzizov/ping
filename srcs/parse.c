@@ -101,7 +101,7 @@ void	parseArgs(t_IcmpTargetType *targets,
 	i = 0;
 	while (*result && ++i < argc)
 	{
-		if (strncmp(argv[i], "-h", 2) == 0)
+		if (strncmp(argv[i], "-h", 2) == 0 && strlen(argv[i]) == 0)
 			targets->currFl.info = TRUE;
 		else if (strncmp(argv[i], "-v", 2) == 0)
 			targets->currFl.more_info = TRUE;
