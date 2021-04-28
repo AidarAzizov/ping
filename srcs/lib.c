@@ -19,7 +19,7 @@ int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 	while (s1[i] && s2[i] && i < n)
 	{
 		r = s1[i] - s2[i];
-		if (!r)
+		if (r)
 			return (r);
 		i++;
 	}
