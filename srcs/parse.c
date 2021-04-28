@@ -14,14 +14,13 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	ft_memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
-		if (res)
-			freeaddrinfo(res);
+		freeaddrinfo(res);
 		return (printExitWStr(targets->addr_from_arg,
 				": Name or service not known"));
 	}
 	family = res->ai_family;
 	in = (struct sockaddr_in *)res->ai_addr;
-	//freeaddrinfo(res);
+	freeaddrinfo(res);
 	if (!inet_ntop(family, &(in->sin_addr),
 			targets->dst_addr, sizeof(targets->dst_addr)))
 		return (printExitWStr(
