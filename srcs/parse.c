@@ -62,15 +62,14 @@ BOOL	init_delaytime(double *res, int *index, int argc, char *argv[])
 	if (count_not_of(argv[*index], ' ') > 3
 		&& sscanf(argv[*index], " -i %lf %c ", res, &symb) == 1)
 		return (TRUE);
-	printf("%s\n", argv[*index]);
 	if (strlen(argv[*index]) > 2)
-		return (printExitWStr("invalid argument: '", argv[*index]));
+		return (printExitWStr("invalid argument: ", argv[*index]));
 	(*index)++;
 	if (*index >= argc)
-		return (printExitWStr("option requires an argument -- '",
+		return (printExitWStr("option requires an argument -- ",
 				argv[(*index) - 1]));
 	if (sscanf(argv[*index], " %lf %c ", res, &symb) != 1)
-		return (printExitWStr("invalid argument: '", argv[*index]));
+		return (printExitWStr("invalid argument: ", argv[*index]));
 	return (TRUE);
 }
 
@@ -103,7 +102,7 @@ void	parseArgs(t_IcmpTargetType *targets,
 	int	i;
 
 	i = 0;
-	while (!targets->currFl.info && result && ++i < argc)
+	while (!targets->currFl.info && *result && ++i < argc)
 	{
 		if (strncmp(argv[i], "-h", 2) == 0)
 			targets->currFl.info = TRUE;
