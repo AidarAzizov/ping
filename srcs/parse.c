@@ -14,6 +14,7 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	ft_memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
+		printf("%d\n", res->ai_socktype);
 		freeaddrinfo(res);
 		return (printExitWStr(targets->addr_from_arg,
 				": Name or service not known"));
@@ -92,7 +93,6 @@ BOOL	init_addr(t_IcmpTargetType *targets, const char *arg)
 		targets->addr_from_arg_host = HostToIP(targets);
 		return (targets->addr_from_arg_host);
 	}
-	free(targets->addr_from_arg);
 	return (printExitWStr(arg, ": Name or service not known"));
 }
 
