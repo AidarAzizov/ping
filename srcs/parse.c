@@ -31,8 +31,8 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 
 BOOL	init_count(uint64_t *res, int *index, int argc, char *argv[])
 {
-	char	flag;
-	char	symb;
+	char		flag;
+	char		symb;
 	uint64_t	checker;
 
 	checker = 0;

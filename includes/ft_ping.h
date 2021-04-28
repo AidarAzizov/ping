@@ -61,7 +61,6 @@ typedef struct s_flags
 	BOOL		inf_c;
 	BOOL		inf_w;
 	BOOL		info;
-	BOOL		more_info;
 }	t_flags;
 
 typedef struct s_mdev
