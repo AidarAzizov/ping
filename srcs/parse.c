@@ -21,7 +21,7 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	}
 	family = res->ai_family;
 	in = (struct sockaddr_in *)res->ai_addr;
-	free(res);
+	freeaddrinfo(res);
 	if (!inet_ntop(family, &(in->sin_addr),
 			targets->dst_addr, sizeof(targets->dst_addr)))
 		return (printExitWStr(
