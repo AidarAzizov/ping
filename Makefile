@@ -1,38 +1,47 @@
-NAME = ft_ping
+NAME = push_swap
 
-PATH_SRC = ./srcs/
 
-PATH_INC = ./includes/
+FLAGS = -Wall -Wextra -Werror
 
-INCLUDES = -I $(PATH_INC)
+FUNC = main ping prepare print helpers helpers_other packet parse print sendrecv socket
 
-CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -g
-LIBS = -lm
+HEADER = -I includes/
 
-SRC =	main.c \
-	ping.c \
-	prepare.c \
-	print.c \
-	helpers.c \
-	helpers_other.c \
-	packet.c \
-	parse.c \
-	print.c \
-	sendrecv.c \
-	socket.c
+SRC = $(addprefix src/, $(addsuffix .c, $(FUNC)))
 
-OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
+OBJ = $(addprefix build/, $(addsuffix .o, $(FUNC)))
 
-.PHONY: clean fclean re
+#=====COLOUR========
+RED = \033[1;31m
+GREEN = \033[1;92m
+BLUE = \033[34;1m
+YELLOW = \033[0;33m
+#===================
 
-all: $(NAME)
+all: .PHONY $(NAME)
+
+.PHONY:
+    @mkdir -p build
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(LIBS)
+	@echo "$(GREEN)(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Compiling progect... Wait a sec."
+	@gcc $(FLAGS) -o $(NAME) $(OBJ) $(HEADER)
+	@echo "$(GREEN)(•̀ᴗ•́)و $(NAME) generated!"
 
+build/%.o: src/%.c includes/push_swap.h
+	@gcc $(FLAGS) -o $@ -c $< $(HEADER)
+
+norm :
+	@norminette $(SRC)
 
 clean:
-	rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
+	@rm -rf build
+	@echo "  $(BLUE)OBJ files have been deleted."
 
 fclean: clean
-	rm -f $(NAME)
+	@make fclean -C libft
+	@/bin/rm -f $(NAME)
+	@echo "  $(BLUE)$(NAME) have been deleted."
+
+re: fclean all
