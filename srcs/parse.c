@@ -14,8 +14,8 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	ft_memset(targets->dst_addr, 0, INET_ADDRSTRLEN);
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
-		if (res) exit(2);
-		freeaddrinfo(res);
+		if (res)
+			freeaddrinfo(res);
 		return (printExitWStr(targets->addr_from_arg,
 				": Name or service not known"));
 	}
