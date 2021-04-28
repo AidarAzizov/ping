@@ -18,7 +18,7 @@ BOOL	sender(t_IcmpTargetType *targets)
 	if (howSended == len)
 		return (TRUE);
 	if (howSended == -1)
-		return (printAndExit(strerror(errno), FALSE));
+		return (printAndExit("", FALSE));
 	return (printAndExit("Bad try to send packet", FALSE));
 }
 
@@ -36,6 +36,6 @@ BOOL	receiver(t_IcmpTargetType *target)
 	if (howReceived == target->packlen)
 		return (TRUE);
 	if (howReceived == -1)
-		return (printAndExit(strerror(errno), FALSE));
+		return (printAndExit("recvmsg returned -1", FALSE));
 	return (printAndExit("Bad try to receive packet", FALSE));
 }
