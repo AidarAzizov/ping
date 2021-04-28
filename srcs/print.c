@@ -14,8 +14,12 @@ BOOL	checkHeader(const t_IcmpTargetType *target)
 		|| icmp_h->un.echo.sequence != target->_icmp->un.echo.sequence)
 	{
 		if (icmp_h->type != ICMP_ECHOREPLY)
-			return (PrintAssctdWSeqInfo(ip_h->saddr,
-				target->_icmp->un.echo.sequence, icmp_h->type));
+		{
+			if (target->currFl.more_info)
+				return (PrintAssctdWSeqInfo(ip_h->saddr,
+					target->_icmp->un.echo.sequence, icmp_h->type));
+			return (FALSE);
+		}
 		return (printAndExit("Received packet with wrong header", FALSE));
 	}
 	return (TRUE);
