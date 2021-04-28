@@ -1,19 +1,5 @@
 #include "../includes/ft_ping.h"
 
-
-void ClearAddrinfo(struct addrinfo *res)
-{
-	struct addrinfo *temp;
-
-	while (res != NULL)
-	{
-		temp = res;
-		res = res->ai_next;
-		freeaddrinfo(temp);
-		temp = NULL;
-	}
-}
-
 BOOL	HostToIP(t_IcmpTargetType *targets)
 {
 	struct sockaddr_in	*in;
@@ -29,13 +15,13 @@ BOOL	HostToIP(t_IcmpTargetType *targets)
 	if (getaddrinfo(targets->addr_from_arg, NULL, &hints, &res) != 0)
 	{
 		if (res)
-			ClearAddrinfo(res);
+			freeaddrinfo(res);
 		return (printExitWStr(targets->addr_from_arg,
 				": Name or service not known"));
 	}
 	family = res->ai_family;
 	in = (struct sockaddr_in *)res->ai_addr;
-	ClearAddrinfo(res);
+	freeaddrinfo(res);
 	if (!inet_ntop(family, &(in->sin_addr),
 			targets->dst_addr, sizeof(targets->dst_addr)))
 		return (printExitWStr(
