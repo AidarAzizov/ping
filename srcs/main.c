@@ -71,6 +71,7 @@ int	main(int argc, char *argv[])
 	signal(SIGINT, setSignal);
 	if (!baseInit(&targets, argc, argv))
 		return (ERROR_CODE);
+	write(1, "a", 1);
 	parseArgs(&targets, argc - 1, argv + 1, &res);
 	if (targets.currFl.info)
 		return (printInfo());
