@@ -1,7 +1,7 @@
 NAME = ft_ping
 
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -lm
 
 FUNC = main ping prepare print helpers helpers_other packet parse print sendrecv socket
 
