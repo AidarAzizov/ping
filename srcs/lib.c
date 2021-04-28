@@ -21,6 +21,7 @@ int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 		r = s1[i] - s2[i];
 		if (!r)
 			return (r);
+		i++;
 	}
 	return (0);
 }
